@@ -80,6 +80,10 @@ import "./index.css";
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }
 
+
+        status = 
+      }
+
       return (
         <div className="game">
           <div className="game-board">
