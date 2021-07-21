@@ -10,14 +10,6 @@ import "./index.css";
     );
   }
   class Board extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            squares: Array(9).fill(null),
-            xIsNext: true,
-        };
-    }
-
     handleClick(i) {
       const squares = this.state.squares.slice();
       if (calculateWinner (squares) || squares[i]) {
@@ -30,8 +22,8 @@ import "./index.css";
     }
 
     renderSquare(i) {
-      return <Square value={this.state.squares[i]}
-                     onClick={() => this.handleClick(i)} />;
+      return <Square value={this.props.squares[i]}
+                     onClick={() => this.props.handleClick(i)} />;
     }
   
     render() {
@@ -67,7 +59,24 @@ import "./index.css";
   }
   
   class Game extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        history: [{
+          squares: Array(9).fill(null),
+        }],
+        xIsNext: true,
+      }
+    }
+    
     render() {
+      const history = this.state.history;
+      const current = history[history.length - 1];
+      const winner = calculateWinner(current.squares);
+      let status;
+      if (winner) {
+        status = 
+      }
       return (
         <div className="game">
           <div className="game-board">
